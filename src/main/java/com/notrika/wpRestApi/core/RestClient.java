@@ -1,5 +1,8 @@
 package com.notrika.wpRestApi.core;
 
+import com.google.gson.Gson;
+import com.notrika.wpRestApi.core.helper.SequrityHelper;
+import com.notrika.wpRestApi.services.base.WpRestApiConfigService;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -7,44 +10,54 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RestClient {
 
-    private String server ;
+    private WpRestApiConfigService wpRestApiConfigService ;
+    private SequrityHelper sequrityHelper;
     private RestTemplate rest;
-    private HttpHeaders headers;
     private HttpStatus status;
 
-    public RestClient() {
+    public RestClient(WpRestApiConfigService _wpRestApiConfigService,SequrityHelper _sequrityHelper) {
         this.rest = new RestTemplate();
-        this.headers = new HttpHeaders();
-        headers.add("Content-Type", "application/json");
-        headers.add("Accept", "*/*");
-    }
+        this.wpRestApiConfigService = _wpRestApiConfigService;
+        this.sequrityHelper = _sequrityHelper;
+       }
 
-    public String get(String uri) {
-        HttpEntity<String> requestEntity = new HttpEntity<String>("", headers);
-        ResponseEntity<String> responseEntity = rest.exchange(server + uri, HttpMethod.GET, requestEntity, String.class);
+
+    public String get(String uri,int page,int per_page) {
+
+        HttpEntity<String> requestEntity = new HttpEntity<String>(getHeaders());
+        String urlTemplate = UriComponentsBuilder.fromHttpUrl(wpRestApiConfigService.getSiteUrl() + uri)
+                .queryParam("page", String.valueOf(page))
+                .queryParam("per_page", String.valueOf(per_page))
+                .encode()
+                .toUriString();
+        ResponseEntity<String> responseEntity = rest.exchange(urlTemplate, HttpMethod.GET, requestEntity, String.class);
         this.setStatus(responseEntity.getStatusCode());
         return responseEntity.getBody();
     }
 
     public String post(String uri, String json) {
-        HttpEntity<String> requestEntity = new HttpEntity<String>(json, headers);
-        ResponseEntity<String> responseEntity = rest.exchange(server + uri, HttpMethod.POST, requestEntity, String.class);
+        HttpEntity<String> requestEntity = new HttpEntity<String>(json, getHeaders());
+        ResponseEntity<String> responseEntity = rest.exchange(wpRestApiConfigService.getSiteUrl() + uri, HttpMethod.POST, requestEntity, String.class);
         this.setStatus(responseEntity.getStatusCode());
         return responseEntity.getBody();
     }
 
     public void put(String uri, String json) {
-        HttpEntity<String> requestEntity = new HttpEntity<String>(json, headers);
-        ResponseEntity<String> responseEntity = rest.exchange(server + uri, HttpMethod.PUT, requestEntity, (Class<String>) null);
+        HttpEntity<String> requestEntity = new HttpEntity<String>(json, getHeaders());
+        ResponseEntity<String> responseEntity = rest.exchange(wpRestApiConfigService.getSiteUrl() + uri, HttpMethod.PUT, requestEntity, (Class<String>) null);
         this.setStatus(responseEntity.getStatusCode());
     }
 
     public void delete(String uri) {
-        HttpEntity<String> requestEntity = new HttpEntity<String>("", headers);
-        ResponseEntity<String> responseEntity = rest.exchange(server + uri, HttpMethod.DELETE, requestEntity, (Class<String>) null);
+        HttpEntity<String> requestEntity = new HttpEntity<String>( getHeaders());
+        ResponseEntity<String> responseEntity = rest.exchange(wpRestApiConfigService.getSiteUrl() + uri, HttpMethod.DELETE, requestEntity, (Class<String>) null);
         this.setStatus(responseEntity.getStatusCode());
     }
 
@@ -54,5 +67,13 @@ public class RestClient {
 
     public void setStatus(HttpStatus status) {
         this.status = status;
+    }
+
+    public HttpHeaders getHeaders(){
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+        headers.add("Accept", "*/*");
+        headers.add("Authorization", sequrityHelper.getBasicAuth(wpRestApiConfigService.getConsumerKey(),wpRestApiConfigService.getConsumerSecret()));
+        return headers;
     }
 }

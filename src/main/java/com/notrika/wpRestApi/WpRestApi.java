@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class WpRestApi {
 
     @Autowired
-    WpRestApiConfigService wpRestApiConfigService;
+    public WpRestApiConfigService wpRestApiConfigService;
     @Autowired
     public RestProductService product;
 

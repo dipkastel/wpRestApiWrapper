@@ -1,42 +1,77 @@
 package com.notrika.wpRestApi.services;
 
-import com.notrika.wpRestApi.core.RestClient;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.notrika.wpRestApi.core.helper.SequrityHelper;
+import com.notrika.wpRestApi.core.helper.WpApiService;
 import com.notrika.wpRestApi.entities.Product;
 import com.notrika.wpRestApi.services.base.BaseService;
 import com.notrika.wpRestApi.services.base.WpRestApiConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
-public class RestProductService extends BaseService {
-
+public class RestProductService extends BaseService implements WpApiService<Product> {
 
     @Autowired
-    RestProductService(WpRestApiConfigService _wpRestApiConfig) throws Exception {
-        super(_wpRestApiConfig);
+    RestProductService(WpRestApiConfigService _wpRestApiConfig, SequrityHelper _sequrityHelper) {
+        super(_wpRestApiConfig,_sequrityHelper);
     }
 
-    public  List<Product> getAll() {
 
-         String server ;
-         RestTemplate rest;
-         HttpHeaders headers;
-         HttpStatus status;
-        rest = new RestTemplate();
-        headers = new HttpHeaders();
-        headers.add("Content-Type", "application/json");
-        headers.add("Accept", "*/*");
-        HttpEntity<String> requestEntity = new HttpEntity<String>("", headers);
-        ResponseEntity<String> responseEntity = rest.exchange(this.wpRestApiConfigService.getSiteUrl() + "/wp-json/wc/v3/products", HttpMethod.GET, requestEntity, String.class);
-        status=responseEntity.getStatusCode();
-        String kk= responseEntity.getBody();
-        List<Product> products = new ArrayList<Product>();
-        return products;
+    @Override
+    @Async
+    public Product[] getAll(int page,int per_page) {
+
+
+        var stringResult = get("/wp-json/wc/v3/products",page,per_page);
+        Product[] result = new Gson().fromJson(stringResult, Product[].class);
+        return result;
+    }
+
+    @Override
+    public Product[] getAll(Map<String, String> params) {
+        return new Product[0];
+    }
+
+    @Override
+    public Product get(int id) {
+        return null;
+    }
+
+    @Override
+    public Product get(int id, Map<String, String> params) {
+        return null;
+    }
+
+    @Override
+    public void create(Product obj) {
+
+    }
+
+    @Override
+    public void update(Product obj) {
+
+    }
+
+    @Override
+    public void delete(int id) {
+
+    }
+
+    @Override
+    public Class<Product> getType() {
+        return null;
     }
 
 }

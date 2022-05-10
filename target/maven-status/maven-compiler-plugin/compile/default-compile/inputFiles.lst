@@ -1,3 +1,4 @@
+E:\work\test\ecomerce\wpRestWrapper\src\main\java\com\notrika\wpRestApi\core\helper\WpApiService.java
 E:\work\test\ecomerce\wpRestWrapper\src\main\java\com\notrika\wpRestApi\core\builder\ConsumerKey.java
 E:\work\test\ecomerce\wpRestWrapper\src\main\java\com\notrika\wpRestApi\core\RestClient.java
 E:\work\test\ecomerce\wpRestWrapper\src\main\java\com\notrika\wpRestApi\core\builder\SiteUrl.java
@@ -14,3 +15,5 @@ E:\work\test\ecomerce\wpRestWrapper\src\main\java\com\notrika\wpRestApi\configs\
 E:\work\test\ecomerce\wpRestWrapper\src\main\java\com\notrika\wpRestApi\core\builder\EnumWpApiVersion.java
 E:\work\test\ecomerce\wpRestWrapper\src\main\java\com\notrika\wpRestApi\services\RestProductService.java
 E:\work\test\ecomerce\wpRestWrapper\src\main\java\com\notrika\wpRestApi\entities\Product.java
+E:\work\test\ecomerce\wpRestWrapper\src\main\java\com\notrika\wpRestApi\Main.java
+E:\work\test\ecomerce\wpRestWrapper\src\main\java\com\notrika\wpRestApi\core\helper\SequrityHelper.java

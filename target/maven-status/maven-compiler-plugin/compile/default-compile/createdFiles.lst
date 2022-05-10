@@ -5,7 +5,9 @@ com\notrika\wpRestApi\core\builder\WpRestApiConfigBuilder.class
 com\notrika\wpRestApi\core\builder\EnumWpApiVersion.class
 com\notrika\wpRestApi\WpRestApi.class
 com\notrika\wpRestApi\core\RestClient.class
+com\notrika\wpRestApi\Main.class
 com\notrika\wpRestApi\core\helper\RestHelper.class
+com\notrika\wpRestApi\core\helper\WpApiService.class
 com\notrika\wpRestApi\core\builder\WpRestApiConfig.class
 com\notrika\wpRestApi\services\RestProductService.class
 com\notrika\wpRestApi\core\builder\SiteUrl.class
@@ -14,3 +16,4 @@ com\notrika\wpRestApi\core\builder\Paramic.class
 com\notrika\wpRestApi\services\base\BaseService.class
 com\notrika\wpRestApi\core\builder\ConsumerKey.class
 com\notrika\wpRestApi\core\builder\Initializer.class
+com\notrika\wpRestApi\core\helper\SequrityHelper.class

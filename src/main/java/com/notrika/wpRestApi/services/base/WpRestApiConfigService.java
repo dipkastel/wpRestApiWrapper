@@ -23,7 +23,10 @@ public class WpRestApiConfigService {
     }
 
     public String getSiteUrl() {
-        return siteUrl;
+        if (isHttps)
+            return String.format("https://%s", siteUrl.replace("https://", "").replace("https://", ""));
+        else
+            return String.format("http://%s", siteUrl.replace("http://", "").replace("https://", ""));
     }
 
     public void setSiteUrl(String siteUrl) {

@@ -1,13 +1,15 @@
 package com.notrika.wpRestApi.services.base;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.notrika.wpRestApi.core.RestClient;
+import com.notrika.wpRestApi.core.helper.SequrityHelper;
+import com.notrika.wpRestApi.core.helper.WpApiService;
 
-public class BaseService {
+import java.util.Map;
 
-    public WpRestApiConfigService wpRestApiConfigService;
-    public BaseService(WpRestApiConfigService _wpRestApiConfigService){
-        this.wpRestApiConfigService = _wpRestApiConfigService;
+public class BaseService extends RestClient  {
+
+    public BaseService(WpRestApiConfigService _wpRestApiConfigService, SequrityHelper _sequrityHelper){
+        super(_wpRestApiConfigService,_sequrityHelper);
     }
 
 }
