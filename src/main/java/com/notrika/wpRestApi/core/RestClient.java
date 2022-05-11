@@ -29,22 +29,33 @@ public class RestClient {
        }
 
 
-    public String get(String uri,int page,int per_page) {
+    public String get(String uri) {
 
         HttpEntity<String> requestEntity = new HttpEntity<String>(getHeaders());
         String urlTemplate = UriComponentsBuilder.fromHttpUrl(wpRestApiConfigService.getSiteUrl() + uri)
-                .queryParam("page", String.valueOf(page))
-                .queryParam("per_page", String.valueOf(per_page))
                 .encode()
                 .toUriString();
         ResponseEntity<String> responseEntity = rest.exchange(urlTemplate, HttpMethod.GET, requestEntity, String.class);
         this.setStatus(responseEntity.getStatusCode());
         return responseEntity.getBody();
     }
+
     public String get(String uri,Long id) {
 
         HttpEntity<String> requestEntity = new HttpEntity<String>(getHeaders());
         String urlTemplate = UriComponentsBuilder.fromHttpUrl(wpRestApiConfigService.getSiteUrl() + uri+"/"+id)
+                .encode()
+                .toUriString();
+        ResponseEntity<String> responseEntity = rest.exchange(urlTemplate, HttpMethod.GET, requestEntity, String.class);
+        this.setStatus(responseEntity.getStatusCode());
+        return responseEntity.getBody();
+    }
+    public String get(String uri,int page,int per_page) {
+
+        HttpEntity<String> requestEntity = new HttpEntity<String>(getHeaders());
+        String urlTemplate = UriComponentsBuilder.fromHttpUrl(wpRestApiConfigService.getSiteUrl() + uri)
+                .queryParam("page", String.valueOf(page))
+                .queryParam("per_page", String.valueOf(per_page))
                 .encode()
                 .toUriString();
         ResponseEntity<String> responseEntity = rest.exchange(urlTemplate, HttpMethod.GET, requestEntity, String.class);

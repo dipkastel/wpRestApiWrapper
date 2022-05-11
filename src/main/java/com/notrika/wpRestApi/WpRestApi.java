@@ -1,5 +1,6 @@
 package com.notrika.wpRestApi;
 
+import com.notrika.wpRestApi.services.RestSystemStatusService;
 import com.notrika.wpRestApi.services.base.WpRestApiConfigService;
 import com.notrika.wpRestApi.services.RestProductService;
 import com.notrika.wpRestApi.core.builder.WpRestApiConfig;
@@ -13,6 +14,8 @@ public class WpRestApi {
     public WpRestApiConfigService wpRestApiConfigService;
     @Autowired
     public RestProductService product;
+    @Autowired
+    public RestSystemStatusService system;
 
 
     public void init(WpRestApiConfig builder){

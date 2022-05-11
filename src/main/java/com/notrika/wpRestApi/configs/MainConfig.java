@@ -1,5 +1,6 @@
 package com.notrika.wpRestApi.configs;
 
+import com.google.gson.Gson;
 import com.notrika.wpRestApi.core.RestClient;
 import com.notrika.wpRestApi.services.base.WpRestApiConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +17,20 @@ public class MainConfig {
         wpRestApiConfigService =_wpRestApiConfigService;
     }
 
-//    @Bean
-//    public void Test() throws Exception{
-//        if(!wpRestApiConfigService.isInitial())
-//            throw new Exception("Initialize wpRestApi first");
-//        if(wpRestApiConfigService.getSiteUrl()==null)
-//            throw new Exception("server url is required");
-//        if(wpRestApiConfigService.getConsumerKey()==null)
-//            throw new Exception("consumer key is required");
-//        if(wpRestApiConfigService.getConsumerSecret()==null)
-//            throw new Exception("consumer secret is required");
-//    }
+    @Bean
+    public void Test() throws Exception{
+        if(!wpRestApiConfigService.isInitial())
+            throw new Exception("Initialize wpRestApi first");
+        if(wpRestApiConfigService.getSiteUrl()==null)
+            throw new Exception("server url is required");
+        if(wpRestApiConfigService.getConsumerKey()==null)
+            throw new Exception("consumer key is required");
+        if(wpRestApiConfigService.getConsumerSecret()==null)
+            throw new Exception("consumer secret is required");
+    }
+
+    @Bean
+    public Gson gson(){
+        return new Gson();
+    }
 }

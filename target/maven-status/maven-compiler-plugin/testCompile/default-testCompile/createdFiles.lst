@@ -1,1 +1,3 @@
-com\notrika\test\productTests.class
+com\notrika\test\common\BaseApiTest.class
+com\notrika\test\tests\ProductTests.class
+com\notrika\test\tests\SystemStatusTests.class
