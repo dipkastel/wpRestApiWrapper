@@ -1,5 +1,7 @@
 package com.notrika.wpRestApi.core.builder;
 
+import com.notrika.wpRestApi.constAndEnums.EnumWpApiVersion;
+
 class Paramic {
 
     private String siteUrl;

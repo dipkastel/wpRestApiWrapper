@@ -1,6 +1,8 @@
 package com.notrika.wpRestApi.core.builder;
 
 
+import com.notrika.wpRestApi.constAndEnums.EnumWpApiVersion;
+
 public class ConsumerSecret {
 
     Paramic paramic ;

@@ -1,6 +1,6 @@
 package com.notrika.wpRestApi.services.base;
 
-import com.notrika.wpRestApi.core.builder.EnumWpApiVersion;
+import com.notrika.wpRestApi.constAndEnums.EnumWpApiVersion;
 import com.notrika.wpRestApi.core.builder.WpRestApiConfig;
 import org.springframework.stereotype.Service;
 

@@ -16,8 +16,8 @@ public class MainConfig {
         wpRestApiConfigService =_wpRestApiConfigService;
     }
 
-    @Bean
-    public void Test() throws Exception{
+//    @Bean
+//    public void Test() throws Exception{
 //        if(!wpRestApiConfigService.isInitial())
 //            throw new Exception("Initialize wpRestApi first");
 //        if(wpRestApiConfigService.getSiteUrl()==null)
@@ -26,5 +26,5 @@ public class MainConfig {
 //            throw new Exception("consumer key is required");
 //        if(wpRestApiConfigService.getConsumerSecret()==null)
 //            throw new Exception("consumer secret is required");
-    }
+//    }
 }
