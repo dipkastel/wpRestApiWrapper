@@ -1,4 +1,4 @@
-package com.notrika.wpRestApi.entities.product;
+package com.notrika.wpRestApi.entities.common;
 
 import java.util.List;
 
@@ -10,9 +10,12 @@ public class Links {
 
     @SerializedName("self")
     @Expose
-    public List<Self> self = null;
+    public List<href> self = null;
     @SerializedName("collection")
     @Expose
-    public List<Collection> collection = null;
+    public List<href> collection = null;
+    @SerializedName("up")
+    @Expose
+    public List<href> up = null;
 
 }

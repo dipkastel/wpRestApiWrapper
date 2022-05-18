@@ -1,14 +1,15 @@
-package com.notrika.wpRestApi.entities.product;
-
-import java.util.List;
+package com.notrika.wpRestApi.entities.category;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.notrika.wpRestApi.entities.common.Image;
 import com.notrika.wpRestApi.entities.common.Links;
+import com.notrika.wpRestApi.entities.product.*;
+
+import java.util.List;
 
 
-public class Product {
+public class Category {
     @SerializedName("id")
     @Expose
     public Long id;
@@ -18,6 +19,33 @@ public class Product {
     @SerializedName("slug")
     @Expose
     public String slug;
+    @SerializedName("parent")
+    @Expose
+    public Integer parent;
+    @SerializedName("description")
+    @Expose
+    public String description;
+    @SerializedName("display")
+    @Expose
+    public String display;
+    @SerializedName("image")
+    @Expose
+    public Image image = null;
+    @SerializedName("menu_order")
+    @Expose
+    public Integer menuOrder;
+    @SerializedName("count")
+    @Expose
+    public Integer Count;
+    @SerializedName("_links")
+    @Expose
+    public Links links;
+
+
+
+
+
+
     @SerializedName("permalink")
     @Expose
     public String permalink;
@@ -45,9 +73,6 @@ public class Product {
     @SerializedName("catalog_visibility")
     @Expose
     public String catalogVisibility;
-    @SerializedName("description")
-    @Expose
-    public String description;
     @SerializedName("short_description")
     @Expose
     public String shortDescription;
@@ -156,18 +181,12 @@ public class Product {
     @SerializedName("average_rating")
     @Expose
     public String averageRating;
-    @SerializedName("rating_count")
-    @Expose
-    public Integer ratingCount;
     @SerializedName("upsell_ids")
     @Expose
     public List<Object> upsellIds = null;
     @SerializedName("cross_sell_ids")
     @Expose
     public List<Object> crossSellIds = null;
-    @SerializedName("parent_id")
-    @Expose
-    public Integer parentId;
     @SerializedName("purchase_note")
     @Expose
     public String purchaseNote;
@@ -192,9 +211,6 @@ public class Product {
     @SerializedName("grouped_products")
     @Expose
     public List<Object> groupedProducts = null;
-    @SerializedName("menu_order")
-    @Expose
-    public Integer menuOrder;
     @SerializedName("price_html")
     @Expose
     public String priceHtml;
@@ -216,8 +232,5 @@ public class Product {
     @SerializedName("yoast_head_json")
     @Expose
     public Object yoastHeadJson;
-    @SerializedName("_links")
-    @Expose
-    public Links links;
 
 }

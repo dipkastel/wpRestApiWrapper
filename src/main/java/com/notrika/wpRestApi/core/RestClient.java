@@ -1,19 +1,10 @@
 package com.notrika.wpRestApi.core;
 
-import com.google.gson.Gson;
 import com.notrika.wpRestApi.core.helper.SequrityHelper;
 import com.notrika.wpRestApi.services.base.WpRestApiConfigService;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Async;
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class RestClient {
 

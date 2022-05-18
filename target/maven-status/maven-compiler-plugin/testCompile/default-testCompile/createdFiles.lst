@@ -1,3 +1,5 @@
+com\notrika\test\tests\categoryTests.class
 com\notrika\test\common\BaseApiTest.class
 com\notrika\test\tests\ProductTests.class
 com\notrika\test\tests\SystemStatusTests.class
+com\notrika\test\tests\tagTests.class
